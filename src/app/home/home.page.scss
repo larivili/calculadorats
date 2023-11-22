@@ -1,3 +1,8 @@
+body {
+  background-color: #000; /* Fundo preto */
+  color: #fff; /* Caracteres brancos */
+}
+
 #container {
   position: absolute;
   left: 0;
@@ -5,6 +10,8 @@
   top: 50%;
   transform: translateY(-50%);
   text-align: center;
+  background-color: #333; /* Cor cinza escuro */
+  padding: 20px; /* Ajuste o valor conforme necessário */
 }
 
 #container strong {
@@ -15,12 +22,13 @@
 #container p {
   font-size: 16px;
   line-height: 22px;
-  color: #8c8c8c;
+  color: #fff; /* Caracteres brancos */
   margin: 0;
 }
 
 #container a {
   text-decoration: none;
+  color: #fff; /* Caracteres brancos */
 }
 
 h1, h3 {
