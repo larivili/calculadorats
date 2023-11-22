@@ -1,0 +1,7 @@
+{
+  "name": "calculadorats",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
