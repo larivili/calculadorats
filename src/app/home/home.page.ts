@@ -136,6 +136,26 @@ export class HomePage {
       this.resultado = (parseFloat(this.primeiro_elemento) * -1 + parseFloat(this.segundo_elemento) * -1).toString();
       this.memoria = this.primeiro_elemento + this.operador + this.segundo_elemento + "=" + this.resultado;
       this.is_novo_calculo = true;
+      //funcionalidade sqrt para cálculo de raiz quadrada.
+      //Math.sqrt retorna a raiz quadrada de um número. 
+    } else if (this.operador == "sqrt" && this.primeiro_elemento != "") {
+       if (parseFloat(this.primeiro_elemento) >= 0) { //valida número positivo, já que raiz^2 não aceita número negativo, para que Math.sqrt possa funcionar.
+        this.resultado = Math.sqrt(parseFloat(this.primeiro_elemento)).toString();
+        this.memoria = "sqrt(" + this.primeiro_elemento + ")=" + this.resultado;
+        this.is_novo_calculo = true;
+       }
+      //funcionalidade ^2 para cálculo com número ao quadrado.
+      //parseFloat ** potencializado a 2 para ser o elemento ao quadrado.
+    } else if (this.operador == "^2" && this.primeiro_elemento != "") {
+      this.resultado = (parseFloat(this.primeiro_elemento) ** 2).toString();
+      this.memoria = this.primeiro_elemento + "^2" + this.resultado;
+      this.is_novo_calculo = true;
+      //funcionalidade para exponênciação.
+      //quase o mesmo do calculo ao quadrado mas o parseFloat é potencializado pelo segundo elemento.
+    } else if (this.operador == "^" && this.primeiro_elemento != "" && this.segundo_elemento != "") {
+      this.resultado = (parseFloat(this.primeiro_elemento) ** parseFloat(this.segundo_elemento)).toString();
+      this.memoria = this.primeiro_elemento + "^" + this.segundo_elemento + "=" + this.resultado;
+      this.is_novo_calculo = true;
     } else {
       if (this.operador == "") {
         alert("Nenhum operador foi selecionado.")
