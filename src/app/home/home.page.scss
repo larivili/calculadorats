@@ -1,6 +1,7 @@
+//customização da calculadora!!!!!!!!
 body {
-  background-color: #000; /* Fundo preto */
-  color: #fff; /* Caracteres brancos */
+  background-color: #000; 
+  color: #fff; 
 }
 
 #container {
@@ -10,8 +11,8 @@ body {
   top: 50%;
   transform: translateY(-50%);
   text-align: center;
-  background-color: #333; /* Cor cinza escuro */
-  padding: 20px; /* Ajuste o valor conforme necessário */
+  background-color: #333;
+  padding: 20px; 
 }
 
 #container strong {
@@ -22,13 +23,13 @@ body {
 #container p {
   font-size: 16px;
   line-height: 22px;
-  color: #fff; /* Caracteres brancos */
+  color: #fff;
   margin: 0;
 }
 
 #container a {
   text-decoration: none;
-  color: #fff; /* Caracteres brancos */
+  color: #fff;
 }
 
 h1, h3 {
