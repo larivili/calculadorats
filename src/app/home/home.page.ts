@@ -148,7 +148,7 @@ export class HomePage {
       //parseFloat ** potencializado a 2 para ser o elemento ao quadrado.
     } else if (this.operador == "^2" && this.primeiro_elemento != "") {
       this.resultado = (parseFloat(this.primeiro_elemento) ** 2).toString();
-      this.memoria = this.primeiro_elemento + "^2" + this.resultado;
+      this.memoria = this.primeiro_elemento + "^2=" + this.resultado;
       this.is_novo_calculo = true;
       //funcionalidade para exponênciação.
       //quase o mesmo do calculo ao quadrado mas o parseFloat é potencializado pelo segundo elemento.
