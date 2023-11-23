@@ -58,9 +58,55 @@ export class HomePage {
       this.is_segundo_elemento = true;
     }
   }
+//teste de funcionamento da funcionalidade parenteses para auxilio de calculo com números negativos //deu errado =(
+//criação do método adicionarnumero
+  adicionarnumero(numero: string): void {
+    if(this.is_novo_calculo) {
+      this.primeiro_elemento = "";
+      this.segundo_elemento = "";
+      this.operador = "";
+      this.resultado = "";
+      this.memoria = "";
+      this.is_novo_calculo = false;
+    }
+    
+    if (this.operador == "") {
+      this.primeiro_elemento += numero;
+    } else {
+      this.segundo_elemento += numero;
+    }
+  }
+//funcionalidade parenteses para auxilio de calculo com números negativos
+//uso do "void" para o método abre e fecha parentese é escolhido já que o método não retorna nenhum valor.
+  abreparentese() : void { 
+    if (this.operador == "" && this.primeiro_elemento == "") {
+      this.primeiro_elemento += "(";
+    } else if (this.operador !== "" && this.segundo_elemento == "") {
+      this.segundo_elemento += "(";
+    }
+  }
+//uso do método "endsWith" é uma função que checa se uma string termina com caracteres de outra string, retornando "true" caso termine e "false" caso não.
+//caso o "endsWith" "retorne" true é adicionado o sinal de negativo.
+  fechaparentese() : void {
+    if (this.operador == "" && this.primeiro_elemento.endsWith("(")) {
+      this.primeiro_elemento = this.primeiro_elemento.slice(0, -1);
+      this.primeiro_elemento += "-";
+    } else if (this.operador !== "" && this.segundo_elemento.endsWith("(")) {
+      this.segundo_elemento = this.segundo_elemento.slice(0, -1);
+      this.segundo_elemento += "-";
+    } else {
+      this.adicionarnumero(")");
+    }
+  }
+
+  definiroperador(operador: string): void {
+    if (this.primeiro_elemento !== "") {
+      this.operador = operador;
+    }
+  }
 
   calcular() {
-
+//alteração de "parseInt" para "parseFloat" para o tratamento de números "quebrados".
     if (this.operador == "+" && this.segundo_elemento != "") {
       //this.memoria = this.resultado;
       this.resultado = (parseFloat(this.primeiro_elemento) + parseFloat(this.segundo_elemento)).toString();
@@ -85,6 +131,7 @@ export class HomePage {
       this.memoria = this.primeiro_elemento + this.operador + this.segundo_elemento + "=" + this.resultado;
       this.is_novo_calculo = true;
       //funcionalidade +/- para cálculo com e de números negativos
+      //+/- representa a soma como o primeiro elemento negativo somando com o segundo elemento também como sendo negativo.  
     } else if (this.operador == "+/-" && this.primeiro_elemento != "" && this.segundo_elemento != "") {
       this.resultado = (parseFloat(this.primeiro_elemento) * -1 + parseFloat(this.segundo_elemento) * -1).toString();
       this.memoria = this.primeiro_elemento + this.operador + this.segundo_elemento + "=" + this.resultado;

@@ -2,6 +2,36 @@
   <ion-grid id="container">
     <h3>{{memoria}}</h3>
     <h1>{{resultado}}</h1>
+    <!-- novas funcionalidades (operador potência, operador número ao quadrado, operador de número com "virgula" ) -->
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="('')">:)</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="operadores('^')">x^n</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="digitos('^2')">x^2</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="digitos('.')">.</ion-button>
+      </ion-col>
+    </ion-row>
+    <!-- novas funcionalidades (operador calculo de porcentagem, calculo de números negativos, calculos raiz quadrada)-->
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="operadores('%')">%</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button (click)="operadores('+/-')">+/-</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button (click)="operadores('√')">√</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button (click)="operadores('/')">/</ion-button>
+    </ion-col>
+  </ion-row>
     <ion-row>
       <ion-col>
         <ion-button (click)="digitos('7')">7</ion-button>
@@ -56,26 +86,11 @@
       </ion-col>
       <ion-col>
         <!-- funcionalidade dígito '()' para auxilio no calculo de números com virgula -->
-        <ion-button (click)="digitos('()')">()</ion-button>
+        <ion-button (click)="digitos('(')">()</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button (click)="operadores('/')">/</ion-button>
+        <ion-button (click)="calcular()">=</ion-button>
       </ion-col>
     </ion-row>
-<!-- novas funcionalidades (operador calculo de porcentagem, calculo de números negativos, calculos com números com 'virgula')-->
-  <ion-row>
-    <ion-col>
-      <ion-button (click)="operadores('%')">%</ion-button>
-    </ion-col>
-    <ion-col>
-      <ion-button (click)="operadores('+/-')">+/-</ion-button>
-    </ion-col>
-    <ion-col>
-      <ion-button (click)="digitos('.')">.</ion-button>
-    </ion-col>
-    <ion-col>
-      <ion-button (click)="calcular()">=</ion-button>
-    </ion-col>
-  </ion-row>
   </ion-grid>
 </ion-content>

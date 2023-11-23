@@ -1,3 +1,9 @@
+//customização css!!!!!!!
+body {
+  background-color: #000; 
+  color: #fff; 
+}
+
 #container {
   position: absolute;
   left: 0;
@@ -5,6 +11,8 @@
   top: 50%;
   transform: translateY(-50%);
   text-align: center;
+  background-color: #333; 
+  padding: 20px; 
 }
 
 #container strong {
@@ -15,15 +23,17 @@
 #container p {
   font-size: 16px;
   line-height: 22px;
-  color: #8c8c8c;
+  color: #fff; 
   margin: 0;
 }
 
 #container a {
   text-decoration: none;
+  color: #fff; 
 }
 
 h1, h3 {
   text-align: right;
   padding-right: 10%;
 }
+
