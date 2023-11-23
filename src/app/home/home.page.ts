@@ -58,7 +58,8 @@ export class HomePage {
       this.is_segundo_elemento = true;
     }
   }
-//teste de funcionamento da funcionalidade parenteses para auxilio de calculo com números negativos //deu errado =(
+
+//teste de funcionamento da funcionalidade parenteses para auxilio de calculo com números negativos / tentativa 1 faltou um switch, deu errado / tentativa 2 adicionar o switch
 //criação do método adicionarnumero
   adicionarnumero(numero: string): void {
     if(this.is_novo_calculo) {
@@ -74,6 +75,18 @@ export class HomePage {
       this.primeiro_elemento += numero;
     } else {
       this.segundo_elemento += numero;
+    }
+  }
+
+//funciolanidade do parenteses para auxilio de cálculo com números negativos
+  parenteses(caractere: string): void {
+    switch(caractere) {
+      case "(":
+        this.abreparentese();
+        break;
+      case ")":
+        this.fechaparentese();
+        break;
     }
   }
 //funcionalidade parenteses para auxilio de calculo com números negativos
@@ -106,7 +119,7 @@ export class HomePage {
   }
 
   calcular() {
-//alteração de "parseInt" para "parseFloat" para o tratamento de números "quebrados".
+//parte da modificação ----> alteração de "parseInt" para "parseFloat" para o tratamento de números "quebrados".
     if (this.operador == "+" && this.segundo_elemento != "") {
       //this.memoria = this.resultado;
       this.resultado = (parseFloat(this.primeiro_elemento) + parseFloat(this.segundo_elemento)).toString();
