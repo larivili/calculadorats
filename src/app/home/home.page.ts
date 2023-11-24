@@ -18,19 +18,14 @@ export class HomePage {
   operador: string = "";
   is_novo_calculo: boolean = false;
   expressao: string = ""
+  display: string = "";
 
   constructor() { }
 
 //criação função backspace para apagar um número digitado errado.
 //uso do slice para extrair parte da string sendo (0, -1) usado para apagar apenas o ultimo caractere da string.
 backspace() {
-  this.expressao = this.primeiro_elemento + this.segundo_elemento;
-  if (this.expressao.length > 0) {
-    this.expressao = this.expressao.slice(0, -1);
-  }
-  this.primeiro_elemento = this.expressao.slice(0, this.primeiro_elemento.length);
-  this.segundo_elemento = this.expressao.slice(0, this.segundo_elemento.length);
-
+  this.display = this.display.slice(0, -1);
 }
 
 //criação da função parenteses, para auxilio em cálculo de número negativos com o switch.
@@ -100,10 +95,14 @@ backspace() {
        this.resultado = (parseFloat(this.primeiro_elemento) * parseFloat(this.segundo_elemento)).toString();
        this.memoria = this.primeiro_elemento + this.operador + this.segundo_elemento + "=" + this.resultado;
        this.is_novo_calculo = true;
-     } else if (this.operador == "/" && this.segundo_elemento != "") {
+  //alteração para que se o divisor for 0 não seja permitida a divisão.
+     } else if (this.operador == "/" && this.segundo_elemento != "" && parseFloat(this.segundo_elemento) !== 0) {
        this.resultado = (parseFloat(this.primeiro_elemento) / parseFloat(this.segundo_elemento)).toString();
        this.memoria = this.primeiro_elemento + this.operador + this.segundo_elemento + "=" + this.resultado;
        this.is_novo_calculo = true;
+      if (this.operador == "/" && this.segundo_elemento !== "" && parseFloat(this.segundo_elemento) === 0) {
+       alert("Não é permitida divisão por 0")
+     }
   //inicio da modificação -- primeira modificação (nova funcionalidade) %
      } else if (this.operador == "%" && this.segundo_elemento != "") {
        this.resultado = (parseFloat(this.primeiro_elemento) * parseFloat(this.segundo_elemento) / 100).toString();
@@ -112,7 +111,7 @@ backspace() {
   //funcionalidade +/- para cálculo com e de números negativos
   //+/- representa a soma como o primeiro elemento negativo (por mais que não simbolize) somando com o segundo elemento também como sendo negativo.  
      } else if (this.operador == "+/-" && this.primeiro_elemento != "" && this.segundo_elemento != "") {
-       this.resultado = (parseFloat(this.primeiro_elemento) * -1 + parseFloat(this.segundo_elemento) * -1).toString();
+       this.resultado = (- parseFloat(this.primeiro_elemento) + parseFloat(this.segundo_elemento) * -1).toString();
        this.memoria = this.primeiro_elemento + this.operador + this.segundo_elemento + "=" + this.resultado;
        this.is_novo_calculo = true;
   //funcionalidade sqrt para cálculo de raiz quadrada.
