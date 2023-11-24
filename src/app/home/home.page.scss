@@ -1,18 +1,17 @@
-//customização css!!!!!!!
-body {
-  background-color: #000; 
-  color: #fff; 
+// customização do visual - css
+//criação container para mudar a cor de fundo da calculadora
+.calculadora-container { 
+  --ion-background-color: #ffb6c1;
 }
 
 #container {
+  text-align: center;
+
   position: absolute;
   left: 0;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  text-align: center;
-  background-color: #333; 
-  padding: 20px; 
 }
 
 #container strong {
@@ -23,13 +22,14 @@ body {
 #container p {
   font-size: 16px;
   line-height: 22px;
-  color: #fff; 
+
+  color: #8c8c8c;
+
   margin: 0;
 }
 
-#container a {
+container a {
   text-decoration: none;
-  color: #fff; 
 }
 
 h1, h3 {
@@ -37,3 +37,29 @@ h1, h3 {
   padding-right: 10%;
 }
 
+.visor {
+  background-color: #f0f0f0; /* Cor de fundo do visor */
+  padding: 10px; /* Espaçamento interno do visor */
+  border-radius: 5px; /* Borda arredondada do visor */
+  text-align: right; /* Alinhamento do texto à direita */
+}
+
+/* Estilo para o texto da memória */
+.visor .memoria {
+  font-size: 18px; /* Tamanho da fonte para a memória */
+  color: #555; /* Cor do texto da memória */
+}
+
+/* Estilo para o texto do resultado */
+.visor .resultado {
+  font-size: 24px; /* Tamanho da fonte para o resultado */
+  color: #333; /* Cor do texto do resultado */
+}
+
+//mudar a cor do botão
+ion-button {
+  --ion-color-primary: #f99aaa;
+  width: 100%;
+  height: 50%;
+  border-radius: 10px; 
+}

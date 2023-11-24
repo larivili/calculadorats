@@ -1,7 +1,15 @@
-<ion-content [fullscreen]="true">
+<!-- adicionada a classe calculadora container para a customização alinhada ao scss -->
+<ion-content class="calculadora-container" [fullscreen]="true">
   <ion-grid id="container">
-    <h3>{{memoria}}</h3>
-    <h1>{{resultado}}</h1>
+    <!-- Visor para exibir a memória e o resultado da calculadora -->
+    <ion-row>
+      <ion-col>
+        <div class="visor">  <!-- criação de um conteiner div para o visor -->
+          <h3 class="memoria">{{memoria}}</h3>
+          <h1 class="resultado">{{resultado}}</h1>
+        </div>
+      </ion-col>
+    </ion-row>
     <!-- novas funcionalidades (operador potência, operador número ao quadrado, operador de número com "virgula" ) -->
     <ion-row>
       <ion-col>
@@ -14,7 +22,8 @@
         <ion-button (click)="operadores('^2')">x^2</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button (click)="digitos('.')">.</ion-button>
+        <!-- funcionalidade backspace para apagar valor digitado errado -->
+        <ion-button (click)="backspace()">&#9224;</ion-button>
       </ion-col>
     </ion-row>
     <!-- novas funcionalidades (operador calculo de porcentagem, calculo de números negativos, calculos raiz quadrada)-->
@@ -26,7 +35,7 @@
       <ion-button (click)="operadores('+/-')">+/-</ion-button>
     </ion-col>
     <ion-col>
-      <ion-button (click)="operadores('sqrt')">√</ion-button>
+      <ion-button (click)="operadores('√')">√</ion-button>
     </ion-col>
     <ion-col>
       <ion-button (click)="operadores('/')">/</ion-button>
@@ -85,8 +94,7 @@
         <ion-button (click)="resetar()">C</ion-button>
       </ion-col>
       <ion-col>
-        <!-- funcionalidade parentese '()' para auxilio no calculo de números com virgula -->
-        <ion-button (click)="parentese()">()</ion-button>
+        <ion-button (click)="digitos('.')">.</ion-button>
       </ion-col>
       <ion-col>
         <ion-button (click)="calcular()">=</ion-button>
