@@ -83,64 +83,23 @@ export class HomePage {
     }
   }
 
-//teste de funcionamento da funcionalidade parenteses para auxilio de calculo com números negativos / tentativa 1 faltou um switch, deu errado / tentativa 2 adicionar o switch
-//criação do método adicionarnumero
-  adicionarnumero(numero: string): void {
-    if(this.is_novo_calculo) {
-      this.primeiro_elemento = "";
-      this.segundo_elemento = "";
-      this.operador = "";
-      this.resultado = "";
-      this.memoria = "";
-      this.is_novo_calculo = false;
-    }
-    
-    if (this.operador == "") {
-      this.primeiro_elemento += numero;
-    } else {
-      this.segundo_elemento += numero;
-    }
-  }
-
-//funciolanidade do parenteses para auxilio de cálculo com números negativos
-  parenteses(caractere: string): void {
-    switch(caractere) {
-      case "(":
-        this.abreparentese();
-        break;
-      case ")":
-        this.fechaparentese();
-        break;
-    }
-  }
-//funcionalidade parenteses para auxilio de calculo com números negativos
-//uso do "void" para o método abre e fecha parentese é escolhido já que o método não retorna nenhum valor.
-  abreparentese() : void { 
-    if (this.operador == "" && this.primeiro_elemento == "") {
-      this.primeiro_elemento += "(";
-    } else if (this.operador !== "" && this.segundo_elemento == "") {
-      this.segundo_elemento += "(";
-    }
-  }
-//uso do método "endsWith" é uma função que checa se uma string termina com caracteres de outra string, retornando "true" caso termine e "false" caso não.
-//caso o "endsWith" "retorne" true é adicionado o sinal de negativo.
-  fechaparentese() : void {
-    if (this.operador == "" && this.primeiro_elemento.endsWith("(")) {
-      this.primeiro_elemento = this.primeiro_elemento.slice(0, -1);
-      this.primeiro_elemento += "-";
-    } else if (this.operador !== "" && this.segundo_elemento.endsWith("(")) {
-      this.segundo_elemento = this.segundo_elemento.slice(0, -1);
-      this.segundo_elemento += "-";
-    } else {
-      this.adicionarnumero(")");
-    }
-  }
-
   definiroperador(operador: string): void {
     if (this.primeiro_elemento !== "") {
       this.operador = operador;
     }
   }
+
+//criação da função parenteses, para auxilio em cálculo de número negativos.
+parentese() {
+  if(this.myswitch){
+    this.myswitch = false;
+    this.digitos('(')
+  } else {
+    this.myswitch = true;
+    this.digitos(')')
+  }
+}
+
 
   calcular() {
 //parte da modificação ----> alteração de "parseInt" para "parseFloat" para o tratamento de números "quebrados".
