@@ -16,10 +16,34 @@ export class HomePage {
   segundo_elemento: string = "";
   operador: string = "";
   is_novo_calculo: boolean = false;
+  myswitch: boolean = true;
 
+  
   constructor() { }
 
   digitos(valor: string) {
+    if (valor == '()') {
+      if (this.myswitch) {
+        if (this.verifica_zero) {
+          this.segundo_elemento = '(';
+          this.verifica_zero = false;
+        } else {
+          this.segundo_elemento += '(';
+          this.resultado += '(';
+        }
+        this.myswitch = false;
+      } else {
+        if (this.verifica_zero) {
+          this.segundo_elemento = ')';
+          this.verifica_zero = false;
+        } else {
+          this.segundo_elemento += ')';
+          this.resultado += ')';
+        }
+        this.myswitch = true;
+      }
+      return
+    }
     if (this.is_novo_calculo) {
       this.resetar();
       if(this.is_segundo_elemento){
