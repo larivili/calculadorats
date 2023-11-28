@@ -158,14 +158,23 @@ export class HomePage {
 //verifica a resposta do usuario e encerra se certo ou se errado
   verificar_resposta(): void {
     const resultado_esperado = eval(this.memoria);
-    if (!isNaN(parseFloat(this.resposta_usuario)) && parseFloat(this.resposta_usuario) == resultado_esperado) {
+
+     // Verifica se a resposta do usuário é um número válido
+  const respostaNumerica = parseFloat(this.resposta_usuario);
+  if (!isNaN(respostaNumerica)) {
+    if (respostaNumerica === resultado_esperado) {
       this.resultado = 'Resposta correta!';
     } else {
-      this.resultado = 'Resposta errada, o resultado é ' + resultado_esperado;
+      this.resultado = 'Resposta incorreta. O resultado é: ' + resultado_esperado;
     }
-    this.memoria = '';
-    this.resposta_usuario = '';
+  } else {
+    this.resultado = 'Por favor, insira um valor numérico válido.';
   }
+
+  // Encerra o minigame
+  this.memoria = ''; // Limpa o visor
+  this.resposta_usuario = ''; // Limpa a resposta do usuário
+}
 
   resetar() {
     this.resultado = "0";
