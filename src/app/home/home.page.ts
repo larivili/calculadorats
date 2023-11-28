@@ -6,8 +6,6 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-
-  mySwitch: boolean = true;
   resultado: string = "0";
   memoria: string = "";
   verifica_zero: boolean = true;
@@ -17,27 +15,8 @@ export class HomePage {
   segundo_elemento: string = "";
   operador: string = "";
   is_novo_calculo: boolean = false;
-  expressao: string = ""
-  display: string = "";
 
   constructor() { }
-
-//criação função backspace para apagar um número digitado errado.
-//uso do slice para extrair parte da string sendo (0, -1) usado para apagar apenas o ultimo caractere da string.
-backspace() {
-  this.display = this.display.slice(0, -1);
-}
-
-//criação da função parenteses, para auxilio em cálculo de número negativos com o switch.
-  parentese() {
-    if(this.mySwitch){
-      this.mySwitch = false;
-      this.digitos('(')
-    } else {
-      this.mySwitch = true;
-      this.digitos(')')
-    }
-  }
 
   digitos(valor: string) {
     if (this.is_novo_calculo) {
@@ -109,10 +88,10 @@ backspace() {
        this.memoria = this.primeiro_elemento + this.operador + this.segundo_elemento + "=" + this.resultado;
        this.is_novo_calculo = true;
   //funcionalidade +/- para cálculo com e de números negativos
-  //+/- representa a soma como o primeiro elemento negativo (por mais que não simbolize) somando com o segundo elemento também como sendo negativo.  
+  //+/- representa a soma como o primeiro elemento negativo (por mais que não simbolize, apenas na memória) somando com o segundo elemento também como sendo negativo.  
      } else if (this.operador == "+/-" && this.primeiro_elemento != "" && this.segundo_elemento != "") {
-       this.resultado = (- parseFloat(this.primeiro_elemento) + parseFloat(this.segundo_elemento) * -1).toString();
-       this.memoria = this.primeiro_elemento + this.operador + this.segundo_elemento + "=" + this.resultado;
+       this.resultado = (- parseFloat(this.primeiro_elemento) + (parseFloat(this.segundo_elemento) * -1)).toString();
+       this.memoria = "(-" + this.primeiro_elemento + ")" + this.operador + "(" + this.segundo_elemento + ")=" + this.resultado;
        this.is_novo_calculo = true;
   //funcionalidade sqrt para cálculo de raiz quadrada.
   //Math.sqrt retorna a raiz quadrada de um número. 
@@ -145,6 +124,9 @@ backspace() {
     }
    }
 
+  minigame() {
+    
+  }
   resetar() {
     this.resultado = "0";
     this.memoria = ""
