@@ -139,9 +139,14 @@ export class HomePage {
 //gera a conta aleatória, faz a seleção dos números e operadores aleatoriamente.
   gerador_conta(): string {
     const primeiro_numero = this.gerador_numero(0, 100);
-    const segundo_numero = this.gerador_numero(0, 100);
     const operador = this.gerador_operador();
-    return primeiro_numero.toString() + ' ' + operador + ' ' + segundo_numero.toString();
+
+    if (operador == '^2') {
+      return primeiro_numero.toString() + operador;
+    } else {
+      const segundo_numero = this.gerador_numero(0, 100);
+      return primeiro_numero.toString() + ' ' + operador + ' ' + segundo_numero.toString();
+    }
   }
 //metodo minigame, seleciona a conta e exibe ao usuário
   minigame(): void {
@@ -161,7 +166,7 @@ export class HomePage {
     this.memoria = '';
     this.resposta_usuario = '';
   }
-  
+
   resetar() {
     this.resultado = "0";
     this.memoria = ""
