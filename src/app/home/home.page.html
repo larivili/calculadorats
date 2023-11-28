@@ -13,17 +13,17 @@
     <!-- novas funcionalidades (operador potência, operador número ao quadrado, operador de número com "virgula" ) -->
     <ion-row>
       <ion-col>
-        <ion-button (click)="('')">:)</ion-button>
+        <ion-button (click)="operadores('^2')">x^2</ion-button>
       </ion-col>
       <ion-col>
         <ion-button (click)="operadores('^')">x^n</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button (click)="operadores('^2')">x^2</ion-button>
+        <!-- funcionalidade minigame para interação e exercício da matemática do usuario -->
+        <ion-button (click)="minigame()">minigame</ion-button>
       </ion-col>
       <ion-col>
-        <!-- funcionalidade minigame para interação e exercício da matemática do -->
-        <ion-button (click)="digitos('abc')">abc</ion-button>
+        <ion-button (click)="verificar_resposta()">R: Minigame</ion-button>
       </ion-col>
     </ion-row>
     <!-- novas funcionalidades (operador calculo de porcentagem, calculo de números negativos, calculos raiz quadrada)-->

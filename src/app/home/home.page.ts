@@ -15,6 +15,7 @@ export class HomePage {
   segundo_elemento: string = "";
   operador: string = "";
   is_novo_calculo: boolean = false;
+  resposta_usuario: string = "";
 
   constructor() { }
 
@@ -124,9 +125,43 @@ export class HomePage {
     }
    }
 
-  minigame() {
-    
+//funcionalidade minigame, gera uma conta aleatória para o usuário responder.
+//gera o número aleatório
+  gerador_numero(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
+//gera operador aleatório dentre + - * / ^2 e %
+  gerador_operador(): string {
+    const operadores = ['+', '-', '*', '/', '^2', '%'];
+    const indice = this.gerador_numero(0, operadores.length - 1);
+    return operadores[indice];
+  }
+//gera a conta aleatória, faz a seleção dos números e operadores aleatoriamente.
+  gerador_conta(): string {
+    const primeiro_numero = this.gerador_numero(0, 100);
+    const segundo_numero = this.gerador_numero(0, 100);
+    const operador = this.gerador_operador();
+    return primeiro_numero.toString() + ' ' + operador + ' ' + segundo_numero.toString();
+  }
+//metodo minigame, seleciona a conta e exibe ao usuário
+  minigame(): void {
+    const conta_aleatoria = this.gerador_conta();
+    this.memoria = ('Bem vindo ao jogo, resolva: ' + conta_aleatoria + '=');
+    this.resultado = '';
+    this.resposta_usuario = '';
+  }
+//verifica a resposta do usuario e encerra se certo ou se errado
+  verificar_resposta(): void {
+    const resultado_esperado = eval(this.memoria);
+    if (!isNaN(parseFloat(this.resposta_usuario)) && parseFloat(this.resposta_usuario) == resultado_esperado) {
+      this.resultado = 'Resposta correta!';
+    } else {
+      this.resultado = 'Resposta errada, o resultado é ' + resultado_esperado;
+    }
+    this.memoria = '';
+    this.resposta_usuario = '';
+  }
+  
   resetar() {
     this.resultado = "0";
     this.memoria = ""
