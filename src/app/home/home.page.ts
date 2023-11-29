@@ -15,7 +15,6 @@ export class HomePage {
   segundo_elemento: string = "";
   operador: string = "";
   is_novo_calculo: boolean = false;
-  resposta_usuario: string = "";
 
   constructor() { }
 
@@ -46,7 +45,6 @@ export class HomePage {
         }
       }
     }
-
   }
 
   operadores(operador: string) {
@@ -62,11 +60,9 @@ export class HomePage {
    calcular() {
 //alteração de "parseInt" para "parseFloat" para o tratamento de números "quebrados".
      if (this.operador == "+" && this.segundo_elemento != "") {
-        this.memoria = this.resultado;
         this.resultado = (parseFloat(this.primeiro_elemento) + parseFloat(this.segundo_elemento)).toString();
-        this.memoria += "=" + this.resultado;
-       this.memoria = this.primeiro_elemento + this.operador + this.segundo_elemento + "=" + this.resultado;
-       this.is_novo_calculo = true;
+        this.memoria = this.primeiro_elemento + this.operador + this.segundo_elemento + "=" + this.resultado;
+        this.is_novo_calculo = true;
      } else if (this.operador == "-" && this.segundo_elemento != "") {
        this.resultado = (parseFloat(this.primeiro_elemento) - parseFloat(this.segundo_elemento)).toString();
        this.memoria = this.primeiro_elemento + this.operador + this.segundo_elemento + "=" + this.resultado;
@@ -124,57 +120,6 @@ export class HomePage {
        }
     }
    }
-
-//funcionalidade minigame, gera uma conta aleatória para o usuário responder.
-//gera o número aleatório
-  gerador_numero(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-//gera operador aleatório dentre + - * / ^2 e %
-  gerador_operador(): string {
-    const operadores = ['+', '-', '*', '/', '^2', '%'];
-    const indice = this.gerador_numero(0, operadores.length - 1);
-    return operadores[indice];
-  }
-//gera a conta aleatória, faz a seleção dos números e operadores aleatoriamente.
-  gerador_conta(): string {
-    const primeiro_numero = this.gerador_numero(0, 100);
-    const operador = this.gerador_operador();
-
-    if (operador == '^2') {
-      return primeiro_numero.toString() + operador;
-    } else {
-      const segundo_numero = this.gerador_numero(0, 100);
-      return primeiro_numero.toString() + ' ' + operador + ' ' + segundo_numero.toString();
-    }
-  }
-//metodo minigame, seleciona a conta e exibe ao usuário
-  minigame(): void {
-    const conta_aleatoria = this.gerador_conta();
-    this.memoria = ('Bem vindo ao jogo, resolva: ' + conta_aleatoria + '=');
-    this.resultado = '';
-    this.resposta_usuario = '';
-  }
-//verifica a resposta do usuario e encerra se certo ou se errado
-  verificar_resposta(): void {
-    const resultado_esperado = eval(this.memoria);
-
-     // Verifica se a resposta do usuário é um número válido
-  const respostaNumerica = parseFloat(this.resposta_usuario);
-  if (!isNaN(respostaNumerica)) {
-    if (respostaNumerica === resultado_esperado) {
-      this.resultado = 'Resposta correta!';
-    } else {
-      this.resultado = 'Resposta incorreta. O resultado é: ' + resultado_esperado;
-    }
-  } else {
-    this.resultado = 'Por favor, insira um valor numérico válido.';
-  }
-
-  // Encerra o minigame
-  this.memoria = ''; // Limpa o visor
-  this.resposta_usuario = ''; // Limpa a resposta do usuário
-}
 
   resetar() {
     this.resultado = "0";

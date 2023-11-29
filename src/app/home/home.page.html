@@ -10,20 +10,13 @@
         </div>
       </ion-col>
     </ion-row>
-    <!-- novas funcionalidades (operador potência, operador número ao quadrado, operador de número com "virgula" ) -->
+    <!-- novas funcionalidades (operador potência, operador número ao quadrado) -->
     <ion-row>
       <ion-col>
         <ion-button (click)="operadores('^2')">x^2</ion-button>
       </ion-col>
       <ion-col>
         <ion-button (click)="operadores('^')">x^n</ion-button>
-      </ion-col>
-      <ion-col>
-        <!-- funcionalidade minigame para interação e exercício da matemática do usuario -->
-        <ion-button (click)="minigame()">minigame</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button (click)="verificar_resposta()">R: Minigame</ion-button>
       </ion-col>
     </ion-row>
     <!-- novas funcionalidades (operador calculo de porcentagem, calculo de números negativos, calculos raiz quadrada)-->
@@ -88,10 +81,10 @@
 
     <ion-row>
       <ion-col>
-        <ion-button (click)="digitos('0')">0</ion-button>
+        <ion-button (click)="resetar()">C</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button (click)="resetar()">C</ion-button>
+        <ion-button (click)="digitos('0')">0</ion-button>
       </ion-col>
       <ion-col>
         <ion-button (click)="digitos('.')">.</ion-button>
