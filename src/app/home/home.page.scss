@@ -36,26 +36,27 @@ h1, h3 {
   padding-right: 10%;
 }
 
+// visual do visor
 .visor {
-  background-color: #f0f0f0; /* Cor de fundo do visor */
-  padding: 10px; /* Espaçamento interno do visor */
-  border-radius: 5px; /* Borda arredondada do visor */
-  text-align: right; /* Alinhamento do texto à direita */
+  background-color: #f0f0f0; 
+  padding: 10px; 
+  border-radius: 5px; 
+  text-align: right; 
 }
 
-/* Estilo para o texto da memória */
+// memoria da calculadora 
 .visor .memoria {
-  font-size: 18px; /* Tamanho da fonte para a memória */
-  color: #555; /* Cor do texto da memória */
+  font-size: 18px; 
+  color: #555; 
 }
 
-/* Estilo para o texto do resultado */
+// resultado da calculadora
 .visor .resultado {
-  font-size: 24px; /* Tamanho da fonte para o resultado */
-  color: #333; /* Cor do texto do resultado */
+  font-size: 24px;
+  color: #333; 
 }
 
-//mudar a cor do botão
+// mudar a cor do botão
 ion-button {
   --ion-color-primary: #f99aaa;
   width: 100%;
